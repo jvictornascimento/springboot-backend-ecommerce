@@ -1,4 +1,4 @@
-package com.jvictornascimento.bynowdotcom;
+package com.jvictornascimento.buynowdotcom;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

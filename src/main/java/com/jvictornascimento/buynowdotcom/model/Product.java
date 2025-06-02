@@ -1,4 +1,4 @@
-package com.jvictornascimento.bynowdotcom.model;
+package com.jvictornascimento.buynowdotcom.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.jvictornascimento.bynowdotcom.model;
+package com.jvictornascimento.buynowdotcom.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,7 +16,7 @@ public class Category {
     private long id;
     private String name;
 
-    @OneToOne(mappedBy = "category")
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 
     public Category(String name) {

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jvictornascimento</groupId>
-	<artifactId>bynowdotcom</artifactId>
+	<artifactId>buynowdotcom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bynowdotcom</name>
+	<name>buynowdotcom</name>
 	<description>A simple ecommerce application demo</description>
 	<url/>
 	<licenses>
