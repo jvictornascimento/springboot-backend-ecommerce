@@ -1,4 +1,4 @@
-package com.jvictornascimento.bynowdotcom;
+package com.jvictornascimento.buynowdotcom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
