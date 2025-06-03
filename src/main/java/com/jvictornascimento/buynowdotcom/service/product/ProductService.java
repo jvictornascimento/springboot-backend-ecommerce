@@ -1,15 +1,15 @@
 package com.jvictornascimento.buynowdotcom.service.product;
 
+import com.jvictornascimento.buynowdotcom.dtos.ImageDto;
+import com.jvictornascimento.buynowdotcom.dtos.ProductDto;
 import com.jvictornascimento.buynowdotcom.model.*;
-import com.jvictornascimento.buynowdotcom.repository.CartItemRepository;
-import com.jvictornascimento.buynowdotcom.repository.CategoryRepository;
-import com.jvictornascimento.buynowdotcom.repository.OrderItemRepository;
-import com.jvictornascimento.buynowdotcom.repository.ProductRepository;
+import com.jvictornascimento.buynowdotcom.repository.*;
 import com.jvictornascimento.buynowdotcom.request.AddProductRequest;
 import com.jvictornascimento.buynowdotcom.request.ProductUpdateRequest;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,11 +22,13 @@ public class ProductService implements IProductService {
     private final CategoryRepository categoryRepository;
     private final CartItemRepository cartItemRepository;
     private final OrderItemRepository orderItemRepository;
+    private final ImageRepository imageRepository;
+    private final ModelMapper modelMapper;
 
     @Override
     public Product addProduct(AddProductRequest request) {
         if (productExists(request.getName(), request.getBrand())) {
-            throw new EntityExistsException(request.getName() + "already exists!");
+            throw new EntityExistsException(request.getName() + " already exists!");
         }
         Category category = Optional.ofNullable(categoryRepository.findByName(request.getCategory().getName()))
                 .orElseGet(() -> {
@@ -109,12 +111,12 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> getProductByCategoryAndBrand(String category, String brand) {
+    public List<Product> getProductsByCategoryAndBrand(String category, String brand) {
         return productRepository.findByCategoryNameAndBrand(category, brand);
     }
 
     @Override
-    public List<Product> getProductByCategor(String category) {
+    public List<Product> getProductsByCategory(String category) {
         return productRepository.findByCategoryName(category);
     }
 
@@ -132,4 +134,21 @@ public class ProductService implements IProductService {
     public List<Product> getProductsByName(String name) {
         return productRepository.findByName(name);
     }
+
+    @Override
+    public List<ProductDto> getConvertedProducts(List<Product> products) {
+        return products.stream().map(this::convertToDto).toList();
+    }
+
+    @Override
+    public ProductDto convertToDto(Product product) {
+        ProductDto productDto = modelMapper.map(product, ProductDto.class);
+        List<Image> images = imageRepository.findByProductId(product.getId());
+        List<ImageDto> imageDtos = images.stream()
+                .map(image -> modelMapper.map(image, ImageDto.class))
+                .toList();
+        productDto.setImages(imageDtos);
+        return productDto;
+    }
+
 }
