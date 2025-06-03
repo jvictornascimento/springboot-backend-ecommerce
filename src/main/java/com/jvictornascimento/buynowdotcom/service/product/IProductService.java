@@ -1,5 +1,6 @@
 package com.jvictornascimento.buynowdotcom.service.product;
 
+import com.jvictornascimento.buynowdotcom.dtos.ProductDto;
 import com.jvictornascimento.buynowdotcom.model.Product;
 import com.jvictornascimento.buynowdotcom.request.AddProductRequest;
 import com.jvictornascimento.buynowdotcom.request.ProductUpdateRequest;
@@ -13,10 +14,11 @@ public interface IProductService {
     void deleteProduct(Long productId);
 
     List<Product> getAllProducts();
-    List<Product> getProductByCategoryAndBrand(String category, String brand);
-    List<Product> getProductByCategor(String category);
+    List<Product> getProductsByCategoryAndBrand(String category, String brand);
+    List<Product> getProductsByCategory(String category);
     List<Product> getProductsByBrandAndName(String brand, String name);
     List<Product> getProductsByBrand(String brand);
     List<Product> getProductsByName(String name);
-
+    List<ProductDto> getConvertedProducts(List<Product> products);
+    ProductDto convertToDto(Product product);
 }
