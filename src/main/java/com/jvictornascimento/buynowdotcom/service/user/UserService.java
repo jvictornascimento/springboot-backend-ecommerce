@@ -2,6 +2,7 @@ package com.jvictornascimento.buynowdotcom.service.user;
 
 import com.jvictornascimento.buynowdotcom.dtos.UserDto;
 import com.jvictornascimento.buynowdotcom.model.User;
+import com.jvictornascimento.buynowdotcom.repository.OrderRepository;
 import com.jvictornascimento.buynowdotcom.repository.UserRepositoy;
 import com.jvictornascimento.buynowdotcom.request.CreateUserRequest;
 import com.jvictornascimento.buynowdotcom.request.UserUpdateRequest;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class UserService implements IUserService {
     private final UserRepositoy userRepositoy;
     private final ModelMapper modelMapper;
+    private final OrderRepository orderRepository;
 
     @Override
     public User createUser(CreateUserRequest request) {
