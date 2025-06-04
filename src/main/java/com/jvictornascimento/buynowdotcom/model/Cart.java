@@ -29,10 +29,21 @@ public class Cart {
     public void removeItem(CartItem cartItem) {
         this.items.remove(cartItem);
         cartItem.setCart(null);
-        updateTotalAmout();
+        updateTotalAmount();
     }
 
-    private void updateTotalAmout() {
+    private void updateTotalAmount() {
 
+    }
+
+    public void addItem(CartItem cartItem) {
+        this.items.add(cartItem);
+        cartItem.setCart(this);
+        updateTotalAmount();
+    }
+
+    public void clearCart() {
+        this.items.clear();
+        updateTotalAmount();
     }
 }
