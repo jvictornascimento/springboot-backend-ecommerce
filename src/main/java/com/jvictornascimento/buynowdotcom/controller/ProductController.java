@@ -6,14 +6,11 @@ import com.jvictornascimento.buynowdotcom.request.AddProductRequest;
 import com.jvictornascimento.buynowdotcom.request.ProductUpdateRequest;
 import com.jvictornascimento.buynowdotcom.response.ApiResponse;
 import com.jvictornascimento.buynowdotcom.service.product.IProductService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequiredArgsConstructor

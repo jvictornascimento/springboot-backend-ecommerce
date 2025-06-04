@@ -1,5 +1,7 @@
 package com.jvictornascimento.buynowdotcom.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jvictornascimento.buynowdotcom.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
