@@ -14,8 +14,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,11 +33,12 @@ public class AuthController {
     private final ShopUserDetailService userDetailService;
     private final AuthenticationManager authenticationManager;
 
+
     @Value("${auth.token.accessExpirationInMils}")
     private Long refreshTokenExpirationTime;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticationUser(LoginRequest request, HttpServletResponse response){
+    public ResponseEntity<?> authenticationUser(@RequestBody LoginRequest request, HttpServletResponse response){
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword()));
         String accessToken = jwtUtils.generateAccessTokenForUser(authentication);

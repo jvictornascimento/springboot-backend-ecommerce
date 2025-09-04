@@ -40,7 +40,7 @@ public class JwtUtils {
                 .claim("role", roles)
                 .setIssuedAt(new Date())
                 .setExpiration(calculateExpirationDate(expiationTime))
-                .signWith(key(), SignatureAlgorithm.ES256)
+                .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
@@ -49,7 +49,7 @@ public class JwtUtils {
                 .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(calculateExpirationDate(refreshExpirationTime))
-                .signWith(key(), SignatureAlgorithm.ES256)
+                .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
     private Key key() {
