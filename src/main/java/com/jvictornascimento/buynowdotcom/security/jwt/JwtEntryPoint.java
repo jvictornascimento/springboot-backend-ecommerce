@@ -22,7 +22,7 @@ public class JwtEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         final Map<String, Object> body = new HashMap<>();
         body.put("Error: ", "Unauthorized");
-        body.put("Message: "  ,"Invaldi credenticial");
+        body.put("Message: "  ,"Invalid credential");
         final ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(response.getOutputStream(), body );
     }
