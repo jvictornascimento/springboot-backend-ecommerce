@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Error: "+ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<String> handleNotFaund(EntityNotFoundException ex) {
+    public ResponseEntity<String> handleNotFound(EntityNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

@@ -122,14 +122,13 @@ Este projeto é um backend para um sistema de e-commerce desenvolvido com Java e
 - Associação de pedidos com usuários
 - Integração com banco Mysql
 - Mapeamento de Dto Com Model Mapper
-
-## Em Desenvolvimento
 - Autenticação e Autorização com Spring Security
 - Controle de acesso por perfil
 - Token com Jwt
 
 ## Atualizações Futuras
 - Spring AI. (em fase de pesquisa)
+- Containerização do projeto com Docker
 
 ## Tecnologias
 
